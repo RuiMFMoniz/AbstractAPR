@@ -1,0 +1,8 @@
+QREG 3
+CREG 1
+
+GATE X(1)
+
+MEASURE 2 TO 0
+
+ASSERT (|001>,|001>)

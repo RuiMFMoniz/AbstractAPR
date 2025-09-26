@@ -1,0 +1,11 @@
+QREG 10
+CREG 10
+
+GATE H(0)
+GATE CX(0,1)
+SEQGATE H FROM 0 TO 9
+GATE H(9)
+
+SEQMEASURE FROM 0 TO 9
+
+ASSERT (|++++++++++>,|++++++++++>)

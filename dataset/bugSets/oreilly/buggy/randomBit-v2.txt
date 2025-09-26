@@ -1,0 +1,11 @@
+QREG 1
+CREG 1
+
+GATE Y(0)
+GATE S(0)
+GATE H(0)
+GATE H(0)
+
+MEASURE 0 TO 0
+
+ASSERT (|+0>,|+0>)

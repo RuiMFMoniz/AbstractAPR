@@ -1,0 +1,8 @@
+QREG 10
+CREG 10
+
+SEQGATE H FROM 0 TO 9
+
+SEQMEASURE FROM 0 TO 9
+
+ASSERT (|++++++++++>,|++++++++++>)

@@ -1,0 +1,11 @@
+QREG 3
+CREG 3
+
+GATE H(2)
+
+GATE H(0)
+GATE SWAP(0,2)
+
+SEQMEASURE FROM 0 TO 2
+
+ASSERT (|+++>,|+++>)

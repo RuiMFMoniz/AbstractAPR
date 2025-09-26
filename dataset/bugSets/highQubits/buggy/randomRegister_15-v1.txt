@@ -1,0 +1,9 @@
+QREG 15
+CREG 15
+
+GATE X(1)
+SEQGATE H FROM 0 TO 14
+
+SEQMEASURE FROM 0 TO 14
+
+ASSERT (|+++++++++++++++>,|+++++++++++++++>)

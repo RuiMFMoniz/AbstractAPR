@@ -1,0 +1,89 @@
+# LANGUAGE = QISKIT
+QISKIT_IMPORT = """
+from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister
+import math
+"""
+QISKIT_CIRCUITPRINT = """
+print(qc.draw("text"))
+"""
+
+# LANGUAGE = QISKIT & VERSION = 0.39
+QISKIT_V039_IMPORT = "from qiskit import execute, BasicAer"
+QISKIT_V039_JOBEXEC = """
+job = execute(qc, backend)
+result = job.result()
+"""
+
+# LANGUAGE = QISKIT & VERSION = 1.4.0
+QISKIT_V140_IMPORT = """
+from qiskit.transpiler.preset_passmanagers import generate_preset_pass_manager
+from qiskit_ibm_runtime import SamplerV2 as Sampler
+"""
+QISKIT_V140_JOBEXEC = """
+sampler = Sampler(mode=backend)
+pm = generate_preset_pass_manager(backend=backend, optimization_level=1)
+isa_circuit = pm.run(qc)
+job = sampler.run([(isa_circuit)], shots = 1024)
+"""
+
+# LANGUAGE = QISKIT & VERSION = 1.4.0 & SIMULATOR = BASICSIMULATOR
+QISKIT_V140_BASICSIMULATOR_IMPORT = "from qiskit.providers.basic_provider import BasicSimulator"
+QISKIT_V140_BASICSIMULATOR_SIMULATORDECL = "backend = BasicSimulator()"
+QISKIT_V140_BASICSIMULATOR_SIMULATOROUT = """
+result = job.result()
+print(result[0].data.c0.get_counts())
+"""
+
+# LANGUAGE = QISKIT & VERSION = 1.4.0 & SIMULATOR = AER
+QISKIT_V140_AER_IMPORT = "from qiskit_aer import AerSimulator"
+QISKIT_V140_AER_SIMULATORDECL = "backend = AerSimulator()"
+QISKIT_V140_AER_SIMULATOROUT = """
+result = job.result()
+print(result[0].data.c0.get_counts())
+"""
+
+# LANGUAGE = QISKIT & VERSION = 1.4.0 & SIMULATOR = GENERICBACKEND
+QISKIT_V140_GENERICBACKEND_IMPORT = "from qiskit.providers.fake_provider import GenericBackendV2"
+QISKIT_V140_GENERICBACKEND_SIMULATORDECL = "backend = GenericBackendV2(20)"
+QISKIT_V140_GENERICBACKEND_SIMULATOROUT = """
+result = job.result()
+print(result[0].data.c0.get_counts())
+"""
+
+# LANGUAGE = QISKIT & VERSION = 0.39 & SIMULATOR = BASIC-STATEVECTOR
+QISKIT_V039_STATEVECTOR_SIMULATORDECL = "backend = BasicAer.get_backend('statevector_simulator')"
+QISKIT_V039_STATEVECTOR_SIMULATOROUT = """
+outputstate = result.get_statevector(qc, decimals=3)
+print(outputstate)
+"""
+
+# LANGUAGE = QISKIT & VERSION = 0.39 & SIMULATOR = QASM
+QISKIT_V039_QASM_SIMULATORDECL = "backend = BasicAer.get_backend('qasm_simulator')"
+QISKIT_V039_QASM_SIMULATOROUT = """
+result = job.result()
+counts = result.get_counts(qc)
+print(counts)
+"""
+
+CONST_DICT = {
+    "QISKIT_IMPORT": QISKIT_IMPORT,
+    "QISKIT_CIRCUITPRINT": QISKIT_CIRCUITPRINT,
+    "QISKIT_V039_IMPORT": QISKIT_V039_IMPORT,
+    "QISKIT_V039_JOBEXEC": QISKIT_V039_JOBEXEC,
+    "QISKIT_V039_STATEVECTOR_SIMULATORDECL": QISKIT_V039_STATEVECTOR_SIMULATORDECL,
+    "QISKIT_V039_STATEVECTOR_SIMULATOROUT": QISKIT_V039_STATEVECTOR_SIMULATOROUT,
+    "QISKIT_V039_QASM_SIMULATORDECL": QISKIT_V039_QASM_SIMULATORDECL,
+    "QISKIT_V039_QASM_SIMULATOROUT": QISKIT_V039_QASM_SIMULATOROUT,
+    "QISKIT_V140_IMPORT": QISKIT_V140_IMPORT,
+    "QISKIT_V140_JOBEXEC": QISKIT_V140_JOBEXEC,
+    "QISKIT_V140_BASICSIMULATOR_IMPORT": QISKIT_V140_BASICSIMULATOR_IMPORT,
+    "QISKIT_V140_BASICSIMULATOR_SIMULATORDECL": QISKIT_V140_BASICSIMULATOR_SIMULATORDECL,
+    "QISKIT_V140_BASICSIMULATOR_SIMULATOROUT": QISKIT_V140_BASICSIMULATOR_SIMULATOROUT,
+    "QISKIT_V140_GENERICBACKEND_IMPORT": QISKIT_V140_GENERICBACKEND_IMPORT,
+    "QISKIT_V140_GENERICBACKEND_SIMULATORDECL": QISKIT_V140_GENERICBACKEND_SIMULATORDECL,
+    "QISKIT_V140_GENERICBACKEND_SIMULATOROUT": QISKIT_V140_GENERICBACKEND_SIMULATOROUT,
+    "QISKIT_V140_AER_IMPORT": QISKIT_V140_AER_IMPORT,
+    "QISKIT_V140_AER_SIMULATORDECL": QISKIT_V140_AER_SIMULATORDECL,
+    "QISKIT_V140_AER_SIMULATOROUT": QISKIT_V140_AER_SIMULATOROUT
+}
+

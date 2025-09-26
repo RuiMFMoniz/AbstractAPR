@@ -1,0 +1,17 @@
+QREG 8
+CREG 8
+
+GATE H(0)
+GATE Y(5)
+GATE H(1)
+GATE H(2)
+GATE H(3)
+GATE CZ(0,7)
+GATE H(4)
+GATE H(5)
+GATE H(6)
+GATE H(7)
+
+SEQMEASURE FROM 0 to 7
+
+ASSERT (|++++++++>,|++++++++>)

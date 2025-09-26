@@ -1,0 +1,8 @@
+QREG 20
+CREG 20
+
+SEQGATE H FROM 0 TO 17
+
+SEQMEASURE FROM 0 TO 19
+
+ASSERT (|++++++++++++++++++++>,|++++++++++++++++++++>)
